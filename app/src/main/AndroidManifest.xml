@@ -17,7 +17,10 @@
         </activity>
         <activity android:name=".HighScores" />
         <activity android:name=".Play" />
-        <activity android:name=".Setting"></activity>
+        <activity android:name=".Setting"/>
+        <activity android:name=".Music"/>
+        <activity android:name=".Level">
+        </activity>
     </application>
 
 </manifest>
