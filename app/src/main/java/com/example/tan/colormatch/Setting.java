@@ -20,5 +20,23 @@ public class Setting extends AppCompatActivity {
             Intent i = new Intent(Setting.this, MainActivity.class);
             startActivity(i);
         }
+
+        else if(v.getId() == R.id.musicButton)
+        {
+            Intent i = new Intent(Setting.this, Music.class);
+            startActivity(i);
+        }
+
+        else if(v.getId() == R.id.levelButton)
+        {
+            Intent i = new Intent(Setting.this, Level.class);
+            startActivity(i);
+        }
+
+        else if(v.getId() == R.id.aboutButton)
+        {
+            Intent i = new Intent(Setting.this, About.class);
+            startActivity(i);
+        }
     }
 }

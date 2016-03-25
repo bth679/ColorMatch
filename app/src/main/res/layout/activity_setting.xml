@@ -35,7 +35,8 @@
         android:id="@+id/musicButton"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp" />
+        android:layout_marginTop="52dp"
+        android:onClick="onClickSetting" />
 
     <Button
         android:layout_width="wrap_content"
@@ -43,7 +44,9 @@
         android:text="LEVEL"
         android:id="@+id/levelButton"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/musicButton" />
+        android:layout_alignStart="@+id/musicButton"
+        android:nestedScrollingEnabled="false"
+        android:onClick="onClickSetting" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,5 +55,6 @@
         android:id="@+id/aboutButton"
         android:layout_marginTop="47dp"
         android:layout_below="@+id/levelButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickSetting" />
 </RelativeLayout>
