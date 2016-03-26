@@ -26,4 +26,255 @@
         android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffee00"
+        android:layout_marginTop="125dp"
+        android:layout_marginLeft="25dp">
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 1"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score1"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 1"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow1">
+
+        <TextView
+            android:id="@+id/name2"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 2"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score2"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 2"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffee00"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow2">
+
+        <TextView
+            android:id="@+id/name3"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 3"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score3"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 3"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow3">
+
+        <TextView
+            android:id="@+id/name4"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score4"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffee00"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow4">
+
+        <TextView
+            android:id="@+id/name5"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 5"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score5"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 5"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow5">
+
+        <TextView
+            android:id="@+id/name6"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 6"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score6"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 6"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffee00"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow6">
+
+        <TextView
+            android:id="@+id/name7"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 7"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score7"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 7"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow7">
+
+        <TextView
+            android:id="@+id/name8"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 8"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score8"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 8"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffee00"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow8">
+
+        <TextView
+            android:id="@+id/name9"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 9"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score9"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 9"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/tableRow9">
+
+        <TextView
+            android:id="@+id/name10"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Name 10"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+
+        <TextView
+            android:id="@+id/score1-"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:text="Score 10"
+            android:layout_below="@+id/textView3"
+            android:layout_alignEnd="@+id/back1" />
+    </TableRow>
+
 </RelativeLayout>
