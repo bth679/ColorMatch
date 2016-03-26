@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tan.colormatch.Play">
+    tools:context="com.example.tan.colormatch.Play"
+    android:backgroundTint="#96cfb5"
+    android:background="#caf48c">
 
     <Chronometer
         android:layout_width="wrap_content"
@@ -21,8 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Timer"
+        android:text="TIMER"
         android:id="@+id/textView14"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="197dp" />

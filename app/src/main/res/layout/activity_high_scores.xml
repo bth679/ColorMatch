@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tan.colormatch.HighScores">
+    tools:context="com.example.tan.colormatch.HighScores"
+    android:background="#caf48c"
+    android:backgroundTint="#96cfb5">
 
     <Button
         android:layout_width="wrap_content"
@@ -24,6 +26,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="TOP PLAYERS"
         android:id="@+id/textView3"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <TableRow
@@ -268,7 +271,7 @@
             android:layout_alignEnd="@+id/back1" />
 
         <TextView
-            android:id="@+id/score1-"
+            android:id="@+id/score10"
             android:layout_height="wrap_content"
             android:layout_width="150dp"
             android:textAlignment="center"
@@ -276,5 +279,25 @@
             android:layout_below="@+id/textView3"
             android:layout_alignEnd="@+id/back1" />
     </TableRow>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:text="PLAYERS"
+        android:layout_alignBottom="@+id/tableRow1"
+        android:textStyle="bold"
+        android:layout_alignStart="@+id/tableRow1"
+        android:layout_marginBottom="29dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:textAlignment="center"
+        android:text="BEST TIME"
+        android:layout_alignBottom="@+id/textView15"
+        android:textStyle="bold"
+        android:layout_alignEnd="@+id/tableRow1" />
 
 </RelativeLayout>

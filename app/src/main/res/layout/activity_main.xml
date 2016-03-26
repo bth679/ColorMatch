@@ -7,10 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tan.colormatch.MainActivity">
+    tools:context="com.example.tan.colormatch.MainActivity"
+    android:background="#caf48c"
+    android:backgroundTint="#96cfb5">
 
     <Button
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="PLAY"
         android:id="@+id/playButton"
@@ -20,18 +22,18 @@
         android:onClick="onButtonClick" />
 
     <Button
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:text="HIGH-SCORES"
+        android:text="RECORDS"
         android:id="@+id/highscoresButton"
         android:layout_alignTop="@+id/playButton"
         android:layout_alignParentStart="true"
         android:onClick="onButtonClick" />
 
     <Button
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:text="SETTING"
+        android:text="SETTINGS"
         android:id="@+id/settingButton"
         android:layout_alignTop="@+id/playButton"
         android:layout_alignParentEnd="true"
@@ -43,7 +45,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="COLOR MATCH"
         android:id="@+id/textView"
+        android:textStyle="bold"
         android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#f30d0d" />
 </RelativeLayout>
