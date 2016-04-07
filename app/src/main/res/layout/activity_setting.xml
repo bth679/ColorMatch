@@ -27,37 +27,59 @@
         android:text="SETTINGS"
         android:id="@+id/textView2"
         android:textStyle="bold"
-        android:layout_marginTop="48dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MUSIC"
-        android:id="@+id/musicButton"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:onClick="onClickSetting" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LEVEL"
-        android:id="@+id/levelButton"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/musicButton"
-        android:nestedScrollingEnabled="false"
-        android:onClick="onClickSetting" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="ABOUT"
         android:id="@+id/aboutButton"
-        android:layout_marginTop="47dp"
-        android:layout_below="@+id/levelButton"
+        android:onClick="onClickSetting"
+        android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickSetting" />
+        android:layout_marginTop="35dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MUSIC:"
+        android:textStyle="bold"
+        android:id="@+id/switch1"
+        android:checked="true"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignEnd="@+id/aboutButton" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SFX:"
+        android:textStyle="bold"
+        android:id="@+id/switch2"
+        android:checked="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/switch1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select Difficulty:"
+        android:textStyle="bold"
+        android:id="@+id/textView17"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:spinnerMode="dropdown"
+        android:entries="@array/levels"
+        android:prompt="@string/SelectLevel"
+        android:layout_below="@+id/textView17"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

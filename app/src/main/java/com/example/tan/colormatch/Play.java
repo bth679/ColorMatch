@@ -1,10 +1,16 @@
 package com.example.tan.colormatch;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Context;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,16 +19,23 @@ import java.text.SimpleDateFormat;
 
 public class Play extends AppCompatActivity {
 
-    Timer myTimer;
-    MyTimerTask myTimerTask;
+    // Declare variables
     private Button startGame;
-    private TextView textTimer;
+    private TextView textTimer, counterText;
+    private EditText name;
+    final Context context = this;
+
     int counter = 0;
-    int startingMinute;
-    int startingSecond;
-    int keepingTrack;
-    String minute = "";
-    String second = "";
+
+    long timeStart, timeEnd, timeTotal;
+    String finalTimer = "00:00";
+    String currentCounter = "0";
+
+    String minuteString = "";
+    String secondString = "";
+
+    // create an instance of the DatabaseHelper class here
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,80 +45,87 @@ public class Play extends AppCompatActivity {
         // Initialize variables
         startGame = (Button) findViewById(R.id.stopButton);
         textTimer = (TextView) findViewById(R.id.textTimer);
+        counterText = (TextView) findViewById(R.id.counter);
 
-        // Set onclick listener
-        startGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (myTimer != null) {
-                    myTimer.cancel();
-                }
+        // call the constructor of the DatabaseHelper class
+        myDb = new DatabaseHelper(this);
 
-                myTimer = new Timer();
-                myTimerTask = new MyTimerTask();
-                myTimer.schedule(myTimerTask, 1000, 1000);
-            }
-        });
+        textTimer.setText(finalTimer);
+        counterText.setText(currentCounter);
+
     }
 
-        class MyTimerTask extends TimerTask {
-            @Override
-            public void run() {
-                Calendar calendar = Calendar.getInstance();
-                counter += 1;
+    public void onClickStop(View v) {
 
-                //Start timer
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
-                final String strDate = simpleDateFormat.format(calendar.getTime());
+        if (v.getId() == R.id.stopButton) {
+            counter += 1;
+            currentCounter = "" + counter;
+            counterText.setText(currentCounter);
 
-                final String currentMinute = strDate.substring(0, 2);
-                final String currentSecond = strDate.substring(3, 5);
+            // Start the timing system when the user first clicks the button
+            if (counter == 1) {
+                timeStart = System.currentTimeMillis();
+                finalTimer = "" + timeStart;
+            }
 
-                // Start recording the timer
-                if (counter == 1) {
-                    //startingMinute = Integer.parseInt(currentMinute);
-                    //startingSecond = Integer.parseInt(currentSecond);
-                    startingMinute = 0;
-                    startingSecond = 0;
-                }
+            // Stop the time and record it after the user has completed the puzzle
+            else if (counter == 10) {
+                timeEnd = System.currentTimeMillis();
+                timeTotal = (timeEnd - timeStart) / 1000;
+                long minute = timeTotal / 60;
+                long second = timeTotal % 60;
+                if (minute < 10)
+                    minuteString = "0" + minute;
+                if (second < 10)
+                    secondString = "0" + second;
 
-                // Get the integer of current minute and second
-                //int currentMinuteInt = Integer.parseInt(currentMinute);
-                //int currentSecondInt = Integer.parseInt(currentSecond);
+                finalTimer = minuteString + ":" + secondString;
+                textTimer.setText(finalTimer);
 
-                // Get the final integer of minute and second
-                //int finalMinute = currentMinuteInt - startingMinute;
-                //int finalSecond = currentSecondInt - startingSecond;
+                // get the alert message & add the data to the DB
+                // First get the alert.xml view
+                LayoutInflater layOut = LayoutInflater.from(context);
+                View alertView = layOut.inflate(R.layout.alert, null);
 
-                //final String finalTimer = "" + finalMinute + ":" + finalSecond;
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
-                startingSecond += 1;
-                keepingTrack = startingSecond;
-                startingMinute = startingSecond / 60;
+                // Set alert.xml to alertdialog builder
+                alertDialogBuilder.setView(alertView);
 
-                if (keepingTrack >= 60) {
-                    keepingTrack = startingSecond - 60 * startingMinute;
-                }
+                name = (EditText) alertView.findViewById(R.id.editTextDialogUserInput);
 
-                second = "" + keepingTrack;
-                if (keepingTrack < 10) {
-                    second = "0" + keepingTrack;
-                }
+                // Set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("SAVE",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Add code for inserting to DB
+                                        AddData(name.getText().toString(), finalTimer);
+                                    }
 
-                minute = "" + startingMinute;
-                if (startingMinute < 10) {
-                    minute = "0" + startingMinute;
-                }
+                                })
+                        .setNegativeButton("CANCEL",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
 
-                final String finalTimer = "" + minute + ":" + second;
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
 
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        textTimer.setText(finalTimer);
-                    }
-                });
+                // show it
+                alertDialog.show();
             }
         }
+    }
+
+    public void AddData (String name, String time){
+        boolean isInserted = myDb.insertData(name, time);
+        if (isInserted == true)
+            Toast.makeText(Play.this, "Player Name has been saved", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(Play.this, "Failed to save", Toast.LENGTH_LONG).show();
+    }
 }

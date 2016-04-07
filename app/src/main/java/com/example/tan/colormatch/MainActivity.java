@@ -1,23 +1,21 @@
 package com.example.tan.colormatch;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+//import android.media.MediaPlayer;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    MediaPlayer player;
-
+    //MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        player= MediaPlayer.create(MainActivity.this, R.raw.tension);
-        player.start();
-        player.setLooping(true);
+        //player = MediaPlayer.create(MainActivity.this, R.raw.ColorMatchMusic);
+        //player.start();
     }
 
     public void onButtonClick(View v){
