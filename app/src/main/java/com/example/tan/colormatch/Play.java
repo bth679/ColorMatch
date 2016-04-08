@@ -12,21 +12,17 @@ import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
 
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
-
 public class Play extends AppCompatActivity {
 
     // Declare variables
     private Button startGame;
     private TextView textTimer, counterText;
-    private EditText name;
+    private EditText name, score;
     final Context context = this;
 
     int counter = 0;
 
+    long minute, second;
     long timeStart, timeEnd, timeTotal;
     String finalTimer = "00:00";
     String currentCounter = "0";
@@ -72,13 +68,23 @@ public class Play extends AppCompatActivity {
             else if (counter == 10) {
                 timeEnd = System.currentTimeMillis();
                 timeTotal = (timeEnd - timeStart) / 1000;
-                long minute = timeTotal / 60;
-                long second = timeTotal % 60;
+
+                // Check 1st case
+                if (timeTotal >= 60)
+                    minute = timeTotal / 60;
+                    second = timeTotal % 60;
+                minuteString = "" + minute;
+                secondString = "" + second;
+
+                // Check 2nd case
+                if (timeTotal < 60)
+                    minuteString = "00";
+                    second = timeTotal;
+
                 if (minute < 10)
                     minuteString = "0" + minute;
                 if (second < 10)
                     secondString = "0" + second;
-
                 finalTimer = minuteString + ":" + secondString;
                 textTimer.setText(finalTimer);
 
@@ -93,6 +99,8 @@ public class Play extends AppCompatActivity {
                 alertDialogBuilder.setView(alertView);
 
                 name = (EditText) alertView.findViewById(R.id.editTextDialogUserInput);
+                //score = (EditText) alertView.findViewById(R.id.bestTimeScore);
+                //score.setText(finalTimer);
 
                 // Set dialog message
                 alertDialogBuilder
