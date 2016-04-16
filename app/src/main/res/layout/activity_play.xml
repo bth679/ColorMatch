@@ -9,7 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tan.colormatch.Play"
     android:backgroundTint="#96cfb5"
-    android:background="#caf48c">
+    android:background="#caf48c"
+    android:orientation="vertical"
+    android:id="@+id/draw_circle">
 
     <Chronometer
         android:layout_width="wrap_content"

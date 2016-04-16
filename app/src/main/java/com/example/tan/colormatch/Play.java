@@ -2,15 +2,22 @@ package com.example.tan.colormatch;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 
 public class Play extends AppCompatActivity {
 
@@ -49,6 +56,14 @@ public class Play extends AppCompatActivity {
         textTimer.setText(finalTimer);
         counterText.setText(currentCounter);
 
+        // initialize the circle
+        Paint paint = new Paint();
+        paint.setColor(Color.parseColor("#CD5C5C"));
+        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bg);
+        canvas.drawCircle(300, 400, 150, paint);
+        RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_circle);
+        ll.setBackgroundDrawable(new BitmapDrawable(bg));
     }
 
     public void onClickStop(View v) {
@@ -99,8 +114,6 @@ public class Play extends AppCompatActivity {
                 alertDialogBuilder.setView(alertView);
 
                 name = (EditText) alertView.findViewById(R.id.editTextDialogUserInput);
-                //score = (EditText) alertView.findViewById(R.id.bestTimeScore);
-                //score.setText(finalTimer);
 
                 // Set dialog message
                 alertDialogBuilder

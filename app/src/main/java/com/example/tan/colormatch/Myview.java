@@ -2,13 +2,18 @@ package com.example.tan.colormatch;
 
 import android.content.ClipData;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.view.View;
+import android.graphics.Color;
+import android.content.Context;
+import android.util.AttributeSet;
 
 /**
  * Created by mew2795 on 4/15/16.
  * useful websites
  * http://developer.android.com/training/custom-views/custom-drawing.html
  * http://developer.android.com/guide/topics/graphics/2d-graphics.html
- */
+
 public class Myview {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -37,3 +42,4 @@ public class Myview {
         canvas.drawCircle(mPointerX, mPointerY, mPointerSize, mTextPaint);
     }
 }
+*/
