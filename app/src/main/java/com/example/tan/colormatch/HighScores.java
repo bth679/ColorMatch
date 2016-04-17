@@ -121,8 +121,16 @@ public class HighScores extends AppCompatActivity {
                     break;
             }
 
+            // Only need first 10 highest scores
+            if (count >= 10)
+            {
+                break;
+            }
+
             // Increment the count
-            count += 1;
+            else {
+                count += 1;
+            }
         }
     }
 }

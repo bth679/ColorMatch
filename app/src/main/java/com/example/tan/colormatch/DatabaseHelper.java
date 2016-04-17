@@ -18,8 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // declare the columns of the table
     public static final String COL_1 = "PLAYER_NAME";
-    public static final String COL_2 = "BEST_TIME";
-    public static final String COL_5 = "ID";
+    public static final String COL_2 = "SCORE";
 
     // this is referencing the java class that will manage the SQL DB
     public DatabaseHelper(Context context) {
@@ -32,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // this is the execute sql query method that takes a string sql query and executes this query
-        db.execSQL("create table " + TABLE_NAME + " (PLAYER_NAME TEXT, BEST_TIME TEXT, ID INTEGER PRIMARY KEY AUTOINCREMENT) ");
+        db.execSQL("create table " + TABLE_NAME + " (PLAYER_NAME TEXT, SCORE INTEGER, ID INTEGER PRIMARY KEY AUTOINCREMENT) ");
     }
 
     @Override
@@ -42,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String name, String time) {
+    public boolean insertData(String name, int score) {
         // open the database for reading and writing
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -51,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // you need to specify the column and the data for that column
         contentValues.put(COL_1, name);
-        contentValues.put(COL_2, time);
+        contentValues.put(COL_2, score);
 
         // need to give this the table name and the content values
         long result = db.insert(TABLE_NAME, null, contentValues);

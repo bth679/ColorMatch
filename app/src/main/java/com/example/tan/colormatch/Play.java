@@ -24,18 +24,12 @@ public class Play extends AppCompatActivity {
     // Declare variables
     private Button startGame;
     private TextView textTimer, counterText;
-    private EditText name, score;
+    private EditText name;
     final Context context = this;
 
     int counter = 0;
 
-    long minute, second;
-    long timeStart, timeEnd, timeTotal;
-    String finalTimer = "00:00";
     String currentCounter = "0";
-
-    String minuteString = "";
-    String secondString = "";
 
     // create an instance of the DatabaseHelper class here
     DatabaseHelper myDb;
@@ -47,23 +41,15 @@ public class Play extends AppCompatActivity {
 
         // Initialize variables
         startGame = (Button) findViewById(R.id.stopButton);
-        textTimer = (TextView) findViewById(R.id.textTimer);
         counterText = (TextView) findViewById(R.id.counter);
 
         // call the constructor of the DatabaseHelper class
         myDb = new DatabaseHelper(this);
 
-        textTimer.setText(finalTimer);
         counterText.setText(currentCounter);
 
         // initialize the circle
-        Paint paint = new Paint();
-        paint.setColor(Color.parseColor("#CD5C5C"));
-        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bg);
-        canvas.drawCircle(300, 400, 150, paint);
-        RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_circle);
-        ll.setBackgroundDrawable(new BitmapDrawable(bg));
+        circle("#CD5C5C");
     }
 
     public void onClickStop(View v) {
@@ -73,36 +59,9 @@ public class Play extends AppCompatActivity {
             currentCounter = "" + counter;
             counterText.setText(currentCounter);
 
+
             // Start the timing system when the user first clicks the button
-            if (counter == 1) {
-                timeStart = System.currentTimeMillis();
-                finalTimer = "" + timeStart;
-            }
-
-            // Stop the time and record it after the user has completed the puzzle
-            else if (counter == 10) {
-                timeEnd = System.currentTimeMillis();
-                timeTotal = (timeEnd - timeStart) / 1000;
-
-                // Check 1st case
-                if (timeTotal >= 60)
-                    minute = timeTotal / 60;
-                    second = timeTotal % 60;
-                minuteString = "" + minute;
-                secondString = "" + second;
-
-                // Check 2nd case
-                if (timeTotal < 60)
-                    minuteString = "00";
-                    second = timeTotal;
-
-                if (minute < 10)
-                    minuteString = "0" + minute;
-                if (second < 10)
-                    secondString = "0" + second;
-                finalTimer = minuteString + ":" + secondString;
-                textTimer.setText(finalTimer);
-
+            if (counter == 8) {
                 // get the alert message & add the data to the DB
                 // First get the alert.xml view
                 LayoutInflater layOut = LayoutInflater.from(context);
@@ -122,7 +81,7 @@ public class Play extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // Add code for inserting to DB
-                                        AddData(name.getText().toString(), finalTimer);
+                                        AddData(name.getText().toString(), counter);
                                     }
 
                                 })
@@ -142,11 +101,21 @@ public class Play extends AppCompatActivity {
         }
     }
 
-    public void AddData (String name, String time){
-        boolean isInserted = myDb.insertData(name, time);
+    public void AddData (String name, int score){
+        boolean isInserted = myDb.insertData(name, score);
         if (isInserted == true)
             Toast.makeText(Play.this, "Player Name has been saved", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(Play.this, "Failed to save", Toast.LENGTH_LONG).show();
+    }
+
+    public void circle (String color) {
+        Paint paint = new Paint();
+        paint.setColor(Color.parseColor(color));
+        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bg);
+        canvas.drawCircle(240, 400, 200, paint);
+        RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_circle);
+        ll.setBackgroundDrawable(new BitmapDrawable(bg));
     }
 }
