@@ -53,8 +53,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold" />
-
-    <CheckBox
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView18">
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RED"
@@ -62,9 +65,10 @@
         android:layout_below="@+id/textView18"
         android:layout_alignParentStart="true"
         android:checked="false"
-        android:textColor="#f80606" />
+        android:textColor="#f80606"
+        android:onClick="red"/>
 
-    <CheckBox
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BLUE"
@@ -72,9 +76,10 @@
         android:checked="false"
         android:textColor="#052ef7"
         android:layout_below="@+id/textView18"
-        android:layout_toEndOf="@+id/counter" />
+        android:layout_toEndOf="@+id/counter"
+        android:onClick="blue"/>
 
-    <CheckBox
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="YELLOW"
@@ -82,18 +87,20 @@
         android:checked="false"
         android:textColor="#f6fa06"
         android:layout_below="@+id/textView18"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="yellow"/>
 
-    <CheckBox
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BLACK"
         android:id="@+id/checkBox4"
         android:checked="false"
         android:layout_below="@+id/checkBox"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="black"/>
 
-    <CheckBox
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ORANGE"
@@ -101,9 +108,10 @@
         android:checked="false"
         android:layout_alignTop="@+id/checkBox4"
         android:layout_alignStart="@+id/checkBox2"
-        android:textColor="#f76e05" />
+        android:textColor="#f76e05"
+        android:onClick="orange"/>
 
-    <CheckBox
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PURPLE"
@@ -111,6 +119,7 @@
         android:checked="false"
         android:textColor="#8604f7"
         android:layout_below="@+id/checkBox3"
-        android:layout_alignStart="@+id/checkBox3" />
-
+        android:layout_alignStart="@+id/checkBox3"
+        android:onClick="purple"/>
+    </RadioGroup>
 </RelativeLayout>

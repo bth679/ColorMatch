@@ -52,6 +52,31 @@ public class Play extends AppCompatActivity {
         circle("#CD5C5C");
     }
 
+    public void red(View view) {
+        String cir = "#ff0000";
+        View lay = findViewById(R.id.draw_circle);
+        Paint paint = new Paint();
+        paint.setColor(Color.parseColor(cir));
+        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bg);
+        canvas.drawCircle(240, 400, 200, paint);
+        lay.setBackgroundColor(Color.parseColor(cir));
+    }
+    public void blue(View view) {
+        circle("#0000ff");
+    }
+    public void yellow(View view) {
+        circle("#ffff00");
+    }
+    public void black(View view) {
+        circle("#000000");
+    }
+    public void orange(View view) {
+        circle("#ff9900");
+    }
+    public void purple(View view) {
+        circle("#660066");
+    }
     public void onClickStop(View v) {
 
         if (v.getId() == R.id.stopButton) {
