@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.Context;
@@ -18,6 +17,8 @@ import android.widget.Toast;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+
 
 public class Play extends AppCompatActivity {
 
@@ -28,6 +29,9 @@ public class Play extends AppCompatActivity {
     final Context context = this;
 
     int counter = 0;
+    boolean stop = false;
+
+    private String color = "#ffff00";
 
     String currentCounter = "0";
 
@@ -49,9 +53,16 @@ public class Play extends AppCompatActivity {
         counterText.setText(currentCounter);
 
         // initialize the circle
-        circle("#CD5C5C");
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                circle(color);
+            }
+        }, 2000);
     }
 
+    /**
     public void red(View view) {
         String cir = "#ff0000";
         View lay = findViewById(R.id.draw_circle);
@@ -76,7 +87,8 @@ public class Play extends AppCompatActivity {
     }
     public void purple(View view) {
         circle("#660066");
-    }
+    }*/
+
     public void onClickStop(View v) {
 
         if (v.getId() == R.id.stopButton) {
