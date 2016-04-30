@@ -2,6 +2,7 @@ package com.example.tan.colormatch;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
@@ -179,6 +178,8 @@ public class Play extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // Add code for inserting to DB
                                         AddData(name.getText().toString(), counter);
+                                        Intent i = new Intent(Play.this, Play.class);
+                                        startActivity(i);
                                     }
 
                                 })
@@ -186,6 +187,8 @@ public class Play extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
+                                        Intent i = new Intent(Play.this, Play.class);
+                                        startActivity(i);
                                     }
                                 });
 
