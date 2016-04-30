@@ -54,70 +54,16 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView18">
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RED"
-        android:id="@+id/checkBox"
         android:layout_below="@+id/textView18"
-        android:layout_alignParentStart="true"
-        android:checked="false"
-        android:textColor="#f80606"
-        android:onClick="red"/>
+        android:id="@+id/radioGroup">
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BLUE"
-        android:id="@+id/checkBox2"
-        android:checked="false"
-        android:textColor="#052ef7"
-        android:layout_below="@+id/textView18"
-        android:layout_toEndOf="@+id/counter"
-        android:onClick="blue"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YELLOW"
-        android:id="@+id/checkBox3"
-        android:checked="false"
-        android:textColor="#f6fa06"
-        android:layout_below="@+id/textView18"
-        android:layout_alignParentEnd="true"
-        android:onClick="yellow"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BLACK"
-        android:id="@+id/checkBox4"
-        android:checked="false"
-        android:layout_below="@+id/checkBox"
-        android:layout_alignParentStart="true"
-        android:onClick="black"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ORANGE"
-        android:id="@+id/checkBox5"
-        android:checked="false"
-        android:layout_alignTop="@+id/checkBox4"
-        android:layout_alignStart="@+id/checkBox2"
-        android:textColor="#f76e05"
-        android:onClick="orange"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PURPLE"
-        android:id="@+id/checkBox6"
-        android:checked="false"
-        android:textColor="#8604f7"
-        android:layout_below="@+id/checkBox3"
-        android:layout_alignStart="@+id/checkBox3"
-        android:onClick="purple"/>
     </RadioGroup>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerColor"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:spinnerMode="dropdown" />
 </RelativeLayout>

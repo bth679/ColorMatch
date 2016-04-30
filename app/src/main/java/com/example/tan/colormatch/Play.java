@@ -8,32 +8,56 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
+import java.util.Random;
 
 
 public class Play extends AppCompatActivity {
 
     // Declare variables
-    private Button startGame;
-    private TextView textTimer, counterText;
+    //private Button startGame;
+    private TextView counterText;
     private EditText name;
+
+    /**
+     List of the color's codes
+     red: "#ff0000"
+     blue: "#0000ff"
+     yellow: "#ffff00"
+     black: #000000"
+     orange: #ff9900"
+     purple: #660066"
+     }*/
+
+    String[] myColors = { "#ff0000", "#0000ff", "#ffff00", "#000000", "#ff9900", "#660066"};
+    private String[] spinnerList = { "", "Red", "Blue", "Yellow", "Black", "Orange", "Purple"};
+
+
     final Context context = this;
 
     int counter = 0;
-    boolean stop = false;
-
-    private String color = "#ffff00";
+    final Random random = new Random();
+    int i = 0;
+    int timeChange = 1000;
 
     String currentCounter = "0";
+
+    Spinner spinner;
+    String SpinnerValue;
+    String colorSelected = "";
+    String currentColor = "";
 
     // create an instance of the DatabaseHelper class here
     DatabaseHelper myDb;
@@ -44,7 +68,7 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
         // Initialize variables
-        startGame = (Button) findViewById(R.id.stopButton);
+        //startGame = (Button) findViewById(R.id.stopButton);
         counterText = (TextView) findViewById(R.id.counter);
 
         // call the constructor of the DatabaseHelper class
@@ -52,53 +76,89 @@ public class Play extends AppCompatActivity {
 
         counterText.setText(currentCounter);
 
+        // Adding listener method on spinner
+        spinner = (Spinner) findViewById(R.id.spinnerColor);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Play.this, android.R.layout.simple_list_item_1, spinnerList);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SpinnerValue = (String) spinner.getSelectedItem();
+
+                switch (SpinnerValue) {
+                    case "":
+                        break;
+                    case "Red":
+                        colorSelected = "#ff0000";
+                        spinner.setEnabled(false);
+                        break;
+                    case "Blue":
+                        colorSelected = "#0000ff";
+                        spinner.setEnabled(false);
+                        break;
+                    case "Yellow":
+                        colorSelected = "#ffff00";
+                        spinner.setEnabled(false);
+                        break;
+                    case "Black":
+                        colorSelected = "#000000";
+                        spinner.setEnabled(false);
+                        break;
+                    case "Orange":
+                        colorSelected = "#ff9900";
+                        spinner.setEnabled(false);
+                        break;
+                    case "Purple":
+                        colorSelected = "#660066";
+                        spinner.setEnabled(false);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+            
         // initialize the circle
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        Thread t = new Thread() {
+
             @Override
             public void run() {
-                circle(color);
+                try {
+                    while (!isInterrupted()) {
+                        i = random.nextInt(6 - 1 + 1) + 0;
+                        currentColor = myColors[i];
+                        Thread.sleep(timeChange);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                circle(currentColor);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
             }
-        }, 2000);
-    }
+        };
 
-    /**
-    public void red(View view) {
-        String cir = "#ff0000";
-        View lay = findViewById(R.id.draw_circle);
-        Paint paint = new Paint();
-        paint.setColor(Color.parseColor(cir));
-        Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bg);
-        canvas.drawCircle(240, 400, 200, paint);
-        lay.setBackgroundColor(Color.parseColor(cir));
+        t.start();
     }
-    public void blue(View view) {
-        circle("#0000ff");
-    }
-    public void yellow(View view) {
-        circle("#ffff00");
-    }
-    public void black(View view) {
-        circle("#000000");
-    }
-    public void orange(View view) {
-        circle("#ff9900");
-    }
-    public void purple(View view) {
-        circle("#660066");
-    }*/
 
     public void onClickStop(View v) {
 
         if (v.getId() == R.id.stopButton) {
-            counter += 1;
-            currentCounter = "" + counter;
-            counterText.setText(currentCounter);
-
+            // If the user selects the right color
+            if (colorSelected == currentColor) {
+                counter += 1;
+                timeReduce(counter, timeChange);
+                currentCounter = "" + counter;
+                counterText.setText(currentCounter);
+            }
 
             // Start the timing system when the user first clicks the button
-            if (counter == 8) {
+            if (colorSelected != currentColor) {
                 // get the alert message & add the data to the DB
                 // First get the alert.xml view
                 LayoutInflater layOut = LayoutInflater.from(context);
@@ -154,5 +214,27 @@ public class Play extends AppCompatActivity {
         canvas.drawCircle(240, 400, 200, paint);
         RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_circle);
         ll.setBackgroundDrawable(new BitmapDrawable(bg));
+    }
+
+    // Function that reduces the time interval
+    public void timeReduce (int score, int i) {
+        if (score < 5) {
+            i -= 50;
+        }
+        else if (score < 10) {
+            i -= 75;
+        }
+        else if (score < 15) {
+            i = 200;
+        }
+        else if (score < 25){
+            i = 100;
+        }
+        else if (score < 50){
+            i = 50;
+        }
+        else {
+            i = 20;
+        }
     }
 }
