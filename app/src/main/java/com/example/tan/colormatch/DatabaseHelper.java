@@ -66,7 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res;
 
         // Cursor represents the result of a query
-        res = db.rawQuery("select * from " + TABLE_NAME, null);
+        res = db.rawQuery("select * from " + TABLE_NAME + " order by score desc", null);
         return res;
     }
 }

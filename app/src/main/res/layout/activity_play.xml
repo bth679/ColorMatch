@@ -9,7 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tan.colormatch.Play"
     android:orientation="vertical"
-    android:id="@+id/draw_circle">
+    android:clickable="false"
+    android:background="#6a5b5456">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/draw_circle">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,28 +24,11 @@
         android:text="SCORE"
         android:id="@+id/textView14"
         android:textStyle="bold"
-        android:layout_marginStart="38dp"
-        android:layout_alignTop="@+id/counter"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="STOP"
-        android:id="@+id/stopButton"
-        android:layout_marginBottom="37dp"
-        android:nestedScrollingEnabled="false"
-        android:onClick="onClickStop"
+        android:layout_marginBottom="51dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/textView18" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/counter"
-        android:layout_alignBottom="@+id/stopButton"
-        android:layout_toEndOf="@+id/textView14"
-        android:layout_marginStart="24dp" />
+        android:layout_alignStart="@+id/textView18"
+        android:layout_marginStart="78dp"
+        android:textColor="#f74615" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,10 +36,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="SELECT ONE OF THESE COLORS"
         android:id="@+id/textView18"
-        android:layout_toEndOf="@+id/counter"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#1a3bf3" />
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +52,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerColor"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentStart="true"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/textView18"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="___"
+        android:id="@+id/counter"
+        android:layout_alignBottom="@+id/textView14"
+        android:layout_toEndOf="@+id/textView14"
+        android:layout_marginStart="25dp"
+        android:textColor="#f74615" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

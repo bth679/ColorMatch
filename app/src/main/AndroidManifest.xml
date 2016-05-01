@@ -18,8 +18,6 @@
         <activity android:name=".HighScores" />
         <activity android:name=".Play" />
         <activity android:name=".Setting" />
-        <activity android:name=".Music" />
-        <activity android:name=".Level"></activity>
         <activity android:name=".About"></activity>
     </application>
 

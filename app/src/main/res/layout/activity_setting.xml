@@ -8,8 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tan.colormatch.Setting"
-    android:background="#caf48c"
-    android:backgroundTint="#96cfb5">
+    android:background="#6a5b5456">
 
     <Button
         android:layout_width="wrap_content"
@@ -28,7 +27,8 @@
         android:id="@+id/textView2"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#1a3bf3"/>
 
     <Button
         android:layout_width="wrap_content"

@@ -26,7 +26,6 @@ import java.util.Random;
 public class Play extends AppCompatActivity {
 
     // Declare variables
-    //private Button startGame;
     private TextView counterText;
     private EditText name;
 
@@ -67,13 +66,69 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
         // Initialize variables
-        //startGame = (Button) findViewById(R.id.stopButton);
         counterText = (TextView) findViewById(R.id.counter);
 
         // call the constructor of the DatabaseHelper class
         myDb = new DatabaseHelper(this);
-
         counterText.setText(currentCounter);
+
+        // Adding listener of the screen
+        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.draw_circle);
+        rLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // If the user selects the right color
+                if (colorSelected == currentColor) {
+                    counter += 1;
+                    timeReduce(counter, timeChange);
+                    currentCounter = "" + counter;
+                    counterText.setText(currentCounter);
+                }
+
+                // Start the timing system when the user first clicks the button
+                if (colorSelected != currentColor) {
+                    // get the alert message & add the data to the DB
+                    // First get the alert.xml view
+                    LayoutInflater layOut = LayoutInflater.from(context);
+                    View alertView = layOut.inflate(R.layout.alert, null);
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                    // Set alert.xml to alertdialog builder
+                    alertDialogBuilder.setView(alertView);
+
+                    name = (EditText) alertView.findViewById(R.id.editTextDialogUserInput);
+
+                    // Set dialog message
+                    alertDialogBuilder
+                            .setCancelable(false)
+                            .setPositiveButton("SAVE",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Add code for inserting to DB
+                                            AddData(name.getText().toString(), counter);
+                                            Intent i = new Intent(Play.this, Play.class);
+                                            startActivity(i);
+                                        }
+
+                                    })
+                            .setNegativeButton("CANCEL",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                            Intent i = new Intent(Play.this, Play.class);
+                                            startActivity(i);
+                                        }
+                                    });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                }
+            }
+        });
 
         // Adding listener method on spinner
         spinner = (Spinner) findViewById(R.id.spinnerColor);
@@ -145,62 +200,6 @@ public class Play extends AppCompatActivity {
         t.start();
     }
 
-    public void onClickStop(View v) {
-
-        if (v.getId() == R.id.stopButton) {
-            // If the user selects the right color
-            if (colorSelected == currentColor) {
-                counter += 1;
-                timeReduce(counter, timeChange);
-                currentCounter = "" + counter;
-                counterText.setText(currentCounter);
-            }
-
-            // Start the timing system when the user first clicks the button
-            if (colorSelected != currentColor) {
-                // get the alert message & add the data to the DB
-                // First get the alert.xml view
-                LayoutInflater layOut = LayoutInflater.from(context);
-                View alertView = layOut.inflate(R.layout.alert, null);
-
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-
-                // Set alert.xml to alertdialog builder
-                alertDialogBuilder.setView(alertView);
-
-                name = (EditText) alertView.findViewById(R.id.editTextDialogUserInput);
-
-                // Set dialog message
-                alertDialogBuilder
-                        .setCancelable(false)
-                        .setPositiveButton("SAVE",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        // Add code for inserting to DB
-                                        AddData(name.getText().toString(), counter);
-                                        Intent i = new Intent(Play.this, Play.class);
-                                        startActivity(i);
-                                    }
-
-                                })
-                        .setNegativeButton("CANCEL",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                        Intent i = new Intent(Play.this, Play.class);
-                                        startActivity(i);
-                                    }
-                                });
-
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-
-                // show it
-                alertDialog.show();
-            }
-        }
-    }
-
     public void AddData (String name, int score){
         boolean isInserted = myDb.insertData(name, score);
         if (isInserted == true)
@@ -228,16 +227,16 @@ public class Play extends AppCompatActivity {
             i -= 75;
         }
         else if (score < 15) {
-            i = 200;
-        }
-        else if (score < 25){
             i = 100;
         }
-        else if (score < 50){
+        else if (score < 25){
             i = 50;
         }
-        else {
+        else if (score < 50){
             i = 20;
+        }
+        else {
+            i = 10;
         }
     }
 }

@@ -8,8 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tan.colormatch.MainActivity"
-    android:background="#caf48c"
-    android:backgroundTint="#96cfb5">
+    android:background="#6a5b5456">
 
     <Button
         android:layout_width="110dp"
@@ -19,7 +18,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="78dp"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:textColor="#f11111" />
 
     <Button
         android:layout_width="110dp"
@@ -28,7 +28,8 @@
         android:id="@+id/highscoresButton"
         android:layout_alignTop="@+id/playButton"
         android:layout_alignParentStart="true"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:textColor="#f70b0b" />
 
     <Button
         android:layout_width="110dp"
@@ -37,7 +38,8 @@
         android:id="@+id/settingButton"
         android:layout_alignTop="@+id/playButton"
         android:layout_alignParentEnd="true"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:textColor="#f40909" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,5 +51,5 @@
         android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#f30d0d" />
+        android:textColor="#1a3bf3" />
 </RelativeLayout>
