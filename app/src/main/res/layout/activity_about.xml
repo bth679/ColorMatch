@@ -9,16 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tan.colormatch.About"
     android:onClick="onClickAbout"
-    android:backgroundTint="#96cfb5">
+    android:background="#6a5b5456">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="ABOUT"
+        android:textSize="32sp"
         android:id="@+id/about"
         android:textStyle="bold"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#1a3bf3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -29,7 +31,8 @@
         android:id="@+id/back1"
         android:onClick="onClickAbout"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#f20c0c" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,17 +49,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fill the circle as quickly as possible"
+        android:text="Match the same color as many times as you can"
         android:id="@+id/textView7"
         android:layout_below="@+id/textView8"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="The lower your time the higher your score"
+        android:text="The top 10 highest score will get saved"
         android:id="@+id/textView9"
         android:layout_below="@+id/textView7"
         android:layout_alignStart="@+id/textView7" />

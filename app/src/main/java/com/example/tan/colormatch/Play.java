@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -29,6 +30,7 @@ public class Play extends AppCompatActivity {
     // Declare variables
     private TextView counterText;
     private EditText name;
+    private Button backButton;
 
     /**
      List of the color's codes
@@ -41,7 +43,7 @@ public class Play extends AppCompatActivity {
      }*/
 
     String[] myColors = { "#ff0000", "#0000ff", "#ffff00", "#000000", "#ff9900", "#660066"};
-    private String[] spinnerList = { "", "Red", "Blue", "Yellow", "Black", "Orange", "Purple"};
+    private String[] spinnerList = { "Select", "Red", "Blue", "Yellow", "Black", "Orange", "Purple"};
 
 
     final Context context = this;
@@ -68,6 +70,8 @@ public class Play extends AppCompatActivity {
 
         // Initialize variables
         counterText = (TextView) findViewById(R.id.counter);
+        backButton = (Button) findViewById(R.id.buttonBack);
+
 
         // call the constructor of the DatabaseHelper class
         myDb = new DatabaseHelper(this);
@@ -90,7 +94,7 @@ public class Play extends AppCompatActivity {
                 }
 
                 // Start the timing system when the user first clicks the button
-                if (colorSelected != currentColor) {
+                if (colorSelected != currentColor && SpinnerValue != "Select") {
                     MediaPlayer player = MediaPlayer.create(Play.this, R.raw.wrong);
                     player.start();
 
@@ -147,31 +151,37 @@ public class Play extends AppCompatActivity {
                 SpinnerValue = (String) spinner.getSelectedItem();
 
                 switch (SpinnerValue) {
-                    case "":
+                    case "Select":
                         break;
                     case "Red":
                         colorSelected = "#ff0000";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                     case "Blue":
                         colorSelected = "#0000ff";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                     case "Yellow":
                         colorSelected = "#ffff00";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                     case "Black":
                         colorSelected = "#000000";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                     case "Orange":
                         colorSelected = "#ff9900";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                     case "Purple":
                         colorSelected = "#660066";
                         spinner.setEnabled(false);
+                        backButton.setVisibility(View.GONE);
                         break;
                 }
             }
@@ -244,6 +254,15 @@ public class Play extends AppCompatActivity {
         }
         else {
             i = 10;
+        }
+    }
+
+    // Function for the back button
+    public void onClickBack(View v){
+        if(v.getId() == R.id.buttonBack)
+        {
+            Intent i = new Intent(Play.this, MainActivity.class);
+            startActivity(i);
         }
     }
 }

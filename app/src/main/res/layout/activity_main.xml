@@ -47,9 +47,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="COLOR MATCH"
         android:id="@+id/textView"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="109dp"
+        android:textColor="#1a3bf3"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#1a3bf3" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
