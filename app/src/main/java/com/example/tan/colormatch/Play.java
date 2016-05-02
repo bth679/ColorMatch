@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -79,6 +80,9 @@ public class Play extends AppCompatActivity {
             public void onClick(View v) {
                 // If the user selects the right color
                 if (colorSelected == currentColor) {
+                    MediaPlayer player = MediaPlayer.create(Play.this, R.raw.right);
+                    player.start();
+
                     counter += 1;
                     timeReduce(counter, timeChange);
                     currentCounter = "" + counter;
@@ -87,6 +91,9 @@ public class Play extends AppCompatActivity {
 
                 // Start the timing system when the user first clicks the button
                 if (colorSelected != currentColor) {
+                    MediaPlayer player = MediaPlayer.create(Play.this, R.raw.wrong);
+                    player.start();
+
                     // get the alert message & add the data to the DB
                     // First get the alert.xml view
                     LayoutInflater layOut = LayoutInflater.from(context);

@@ -2,6 +2,7 @@ package com.example.tan.colormatch;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,9 @@ public class HighScores extends AppCompatActivity {
     }
 
     public void onClickHighScores(View v){
+        MediaPlayer player = MediaPlayer.create(HighScores.this, R.raw.click);
+        player.start();
+
 
         if(v.getId() == R.id.back1)
         {

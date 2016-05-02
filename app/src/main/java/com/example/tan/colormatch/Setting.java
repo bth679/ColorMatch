@@ -1,6 +1,7 @@
 package com.example.tan.colormatch;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ public class Setting extends AppCompatActivity {
     }
 
     public void onClickSetting(View v){
+        MediaPlayer player = MediaPlayer.create(Setting.this, R.raw.click);
+        player.start();
+
 
         if(v.getId() == R.id.back1)
         {

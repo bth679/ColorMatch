@@ -19,6 +19,10 @@
         <activity android:name=".Play" />
         <activity android:name=".Setting" />
         <activity android:name=".About"></activity>
+        <service
+            android:enabled="true"
+            android:name=".bgmusic" />
     </application>
+
 
 </manifest>
